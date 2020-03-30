@@ -1,0 +1,18 @@
+--- 
+kind: pipeline
+name: Nickel-Clang
+steps: 
+  - 
+    commands: 
+      - "apt-get -y update && apt-get -y upgrade && apt-get -y install bc bison ca-certificates ccache clang cmake curl file flex gcc g++ git libelf-dev libssl-dev make ninja-build python3 texinfo u-boot-tools zlib1g-dev"
+      - "bash build-tc*"
+    environment: 
+      GITHUB_TOKEN: 
+        from_secret: GITHUB_TOKEN
+      TOKEN: 
+        from_secret: token
+    image: "ubuntu:latest"
+    name: Nickel-Clang
+    trigger: 
+      branch: 
+        - main
