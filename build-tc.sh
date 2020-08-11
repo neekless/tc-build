@@ -30,6 +30,8 @@ msg "Building LLVM..."
 	--targets "ARM;AArch64;X86" \
 	--shallow-clone \
 	--incremental \
+	--pgo \
+	--lto full \
 	--build-type "Release"
 
 # Check if the final clang binary exists or not.
