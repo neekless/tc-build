@@ -79,7 +79,8 @@ git clone "https://$G_USER:$GITHUB_TOKEN@github.com/$G_REL_REPO.git" rel_repo
 pushd rel_repo || exit
 rm -fr ./*
 cp -r ../install/* .
-git checkout README.md # keep this as it's not part of the toolchain itself
+# Keep files that aren't part of the toolchain itself
+git checkout README.md LICENSE
 git add .
 git commit -am "Update to $rel_date build
 
