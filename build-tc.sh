@@ -30,7 +30,7 @@ msg "Building LLVM..."
 	--targets "ARM;AArch64;X86" \
 	--shallow-clone \
 	--incremental \
-	--pgo \
+	--pgo kernel-defconfig \
 	--lto full \
 	--build-type "Release"
 
