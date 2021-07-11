@@ -26,13 +26,13 @@ builder_commit="$(git rev-parse HEAD)"
 msg "Building LLVM..."
 ./build-llvm.py \
 	--clang-vendor "Nickel" \
+	--defines "LLVM_PARALLEL_COMPILE_JOBS=$(nproc --all) LLVM_PARALLEL_LINK_JOBS=$(nproc --all)" \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64;X86" \
 	--shallow-clone \
 	--incremental \
 	--pgo kernel-defconfig \
 	--lto full \
-	--build-type "Release"
 
 # Check if the final clang binary exists or not.
 [ ! -f install/bin/clang-1* ] && {
