@@ -74,8 +74,8 @@ clang_version="$(install/bin/clang --version | head -n1 | cut -d' ' -f4)"
 # Push to GitHub
 # Update Git repository
 git config --global user.name "$G_USER"
-git config --global user.email "22426822+neekless@users.noreply.github.com"
-git clone "https://$G_USER:$GITHUB_TOKEN@github.com/$G_REL_REPO.git" rel_repo
+git config --global user.email "6415551-neekless@users.noreply.gitlab.com"
+git clone "https://$G_USER:$GITLAB_TOKEN@gitlab.com/$G_REL_REPO.git" rel_repo
 pushd rel_repo || exit
 rm -fr ./*
 cp -r ../install/* .
@@ -88,5 +88,14 @@ LLVM commit: $llvm_commit_url
 Clang Version: $clang_version
 Binutils version: $binutils_ver
 Builder commit: https://github.com/$G_BUILD_REPO/commit/$builder_commit"
+
+# Downgrade the HTTP version to 1.1
+git config --global http.version HTTP/1.1
+# Increase git buffer size
+git config --global http.postBuffer 55428800
+
 git push -f
 popd || exit
+
+# Set git buffer to original size
+git config --global http.version HTTP/2

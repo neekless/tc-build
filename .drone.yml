@@ -9,6 +9,8 @@ steps:
     environment: 
       GITHUB_TOKEN: 
         from_secret: GITHUB_TOKEN
+      GITLAB_TOKEN: 
+        from_secret: GITLAB_TOKEN
       TOKEN: 
         from_secret: token
       DEBIAN_FRONTEND: noninteractive
