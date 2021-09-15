@@ -30,8 +30,6 @@ msg "Building LLVM..."
 	--targets "ARM;AArch64;X86" \
 	--shallow-clone \
 	--incremental \
-	--pgo kernel-defconfig \
-	--lto full \
 
 # Check if the final clang binary exists or not.
 [ ! -f install/bin/clang-1* ] && {
